@@ -1,0 +1,75 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block extra_css %}
+{{ form.media.css }}
+{% endblock %}
+
+{% block extra_js %}
+{{ form.media.js }}
+{% endblock %}
+
+{% block content%}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+<div class="jumbotron bg-transparent text">
+        <a class="text" href="{% url 'indiv' %}">Индивидуальные занятия</a><a> / Запись на индивидуальные занятия</a>
+      </div>
+  <div class="jumbotron bg-transparent text">
+  <h1>Запись на индивидуальные занятия</h1>
+</div>
+
+
+ <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+<!--         {{ user_form.as_p }}-->
+         {{ form.as_p }}
+         <div class="d-grid gap-2 d-md-block mt-2">
+            <button type="submit" class="btn btn-sm btnbtn btn-outline-primary">Записаться</button>
+         </div>
+ </form>
+
+<!--  <form class="row g-3">-->
+<!--  <div class="col-md-12">-->
+<!--    <label for="inputStatess" class="form-label">Тренер</label>-->
+<!--    <select id="inputStatess" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-12">-->
+<!--    <label for="inputStatesss" class="form-label">Гимнастка</label>-->
+<!--    <select id="inputStatesss" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-3">-->
+<!--    <label for="inputState" class="form-label">Свободные даты</label>-->
+<!--    <select id="inputStateS" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-3">-->
+<!--    <label for="inputState" class="form-label">Время</label>-->
+<!--    <select id="inputState" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <label for="inputZip" class="form-label">Локация</label>-->
+<!--    <input class="form-control" id="inputZip" type="text" placeholder="Локация" aria-label="Disabled input example" disabled>-->
+<!--  </div>-->
+<!--  <div class="col-12">-->
+<!--  </div>-->
+<!--  <div class="col-12">-->
+<!--    <button type="submit" class="btn btnbtn btn-primary">Записаться и оплатить</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+<!-- </div>-->
+<!--    </div>-->
+{%  endblock %}

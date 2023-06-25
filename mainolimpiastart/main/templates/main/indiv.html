@@ -1,0 +1,37 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block content%}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+        <div class="jumbotron bg-transparent text">
+    <a href="{% url 'indiv_create' %}" class="btn btn-sm btnbtn btn-outline-primary">Записаться на индивидуальую тренировку</a>
+    </div>
+      {% for p in indiv %}
+
+    <table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">ФИО</th>
+      <th scope="col">Имя ребенка</th>
+      <th scope="col">Дата и время тренировки</th>
+      <th scope="col">Локация</th>
+      <th scope="col">Тренер</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{p.user.get_full_name}}</th>
+      <td>{{p.child_name}}</td>
+      <td>{{p.datetime}}</td>
+      <td>{{p.location_name}}</td>
+      <td>{{p.tutor}}</td>
+    </tr>
+  </tbody>
+</table>
+      {% empty %}
+      <li class="text">Записей нет.</li>
+      {% endfor %}
+  </div>
+    </div>
+{%  endblock %}

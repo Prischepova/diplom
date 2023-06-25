@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+      <div class="jumbotron bg-transparent text">
+        <a class="text" href="/user/{{ request.user|lower }}">Профиль</a><a> / Редактировать профиль</a>
+      </div>
+      <div class="card-body text">
+      <div class="card-title nth-card-title">
+         <h4>Изменение профиля</h4>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ user_form.as_p }}
+         {{ form.as_p }}
+         <div class="d-grid gap-2 d-md-block mt-2">
+            <button type="submit" class="btn btnbtn btn-outline-primary">Подтвердить изменение профиля</button>
+         </div>
+      </form>
+   </div>
+  </div>
+</div>
+{% endblock %}

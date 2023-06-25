@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container overflow-hidden">
+  <div class="row">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-sm-4">
+                        <img src="{{ profile.photo.url }}" class="img-fluid rounded-start" alt="{{ profile }}">
+                </div>
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <h4 class="card-title text">
+                        {{ profile }}
+                        </h4>
+                        <p class="card-title text">Никнейм: {{ profile.user.username }}</p>
+                        {% if profile.user.get_full_name %} <p class="card-text text">Имя и фамилия: {{ profile.user.get_full_name }}</p> {% endif %}
+                        <p class="card-text text">Номер телефона: {{ profile.phone }}</p>
+                        <p class="card-text text">Email: {{ profile.user.email }}</p>
+                        <a href="{% url 'profile_edit' %}" class="btn btn-sm btnbtn btn-outline-primary">Редактировать профиль</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+{% endblock %}

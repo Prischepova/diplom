@@ -1,0 +1,40 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+
+{% block content%}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+<div class="jumbotron bg-transparent text">
+  {% if schedule.team %}
+        <a class="text" href="{% url 'index' %}">Расписание</a><a> / {{schedule.team}}</a>
+      </div>
+        {% endif %}
+    {% if schedule.team %}
+    <table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Команада</th>
+      <th scope="col">Дата тренировки</th>
+      <th scope="col">Начало тренировки</th>
+      <th scope="col">Окончание тренировки</th>
+      <th scope="col">Локация</th>
+      <th scope="col">Имя тренера</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{schedule.team}}</th>
+      <td>{{schedule.date_training}}</td>
+      <td>{{schedule.start_training}}</td>
+      <td>{{schedule.finish_training}}</td>
+      <td>{{schedule.location_name}}</td>
+      <td>{{schedule.tutor}}</td>
+    </tr>
+  </tbody>
+</table>
+    {% endif %}
+
+  </div>
+</div>
+{%  endblock %}

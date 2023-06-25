@@ -1,0 +1,230 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block extra_css %}
+{{ filter.form.media.css }}
+{% endblock %}
+
+{% block extra_js %}
+{{ filter.form.media.js }}
+{% endblock %}
+
+{% block content %}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+
+    <div class="jumbotron bg-transparent text">
+      <h1>НОВОСТИ</h1>
+    </div>
+      <div class="pricing-area">
+        <div class="container">
+<!--        <div class="row justify-content-center">-->
+                    <div class="row">
+            {% for p in news %}
+            <div class="col-lg-2 col-sm-6">
+                <div class="single-pricing-news">
+                    <div class="story-author">
+                          <div class="card bg-warning text-center h-100">
+                               <a href="{% url 'newsimage' p.user.id %}" class="img-area"><img src="{{ p.photo.url }}" class="img-fluid rounded-0" alt="{{ photo }}"></a>
+                               <div class="card-body">
+                    <h4 class="card-text text text-center">{{ p.name }}</h4>
+                          <p class="card-text text text-center"></p>
+                      </div>
+                          </div>
+                        </div>
+                </div>
+            </div>
+            {% empty %}
+      <h5 class="text">НОВОСТЕЙ НЕТ</h5>
+            {% endfor %}
+
+<!--            <div class="col-lg-2 col-sm-6">-->
+<!--                <div class="single-pricing-news">-->
+<!--                    <div class="story-author">-->
+<!--                          <div class="card bg-warning text-center h-100">-->
+<!--                               <div class="img-area"><img src="{% static 'main/images/logoForStory.png' %}" ></div>-->
+<!--                               <div class="card-body">-->
+<!--                    <h4 class="card-text text text-center">Имя</h4>-->
+<!--                          <p class="card-text text text-center"></p>-->
+<!--                      </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-sm-6">-->
+<!--                <div class="single-pricing-news">-->
+<!--                    <div class="story-author">-->
+<!--                          <div class="card bg-warning text-center h-100">-->
+<!--                               <div class="img-area"><img src="{% static 'main/images/logoForStory.png' %}" ></div>-->
+<!--                               <div class="card-body">-->
+<!--                    <h4 class="card-text text text-center">Имя</h4>-->
+<!--                          <p class="card-text text text-center"></p>-->
+<!--                      </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-sm-6">-->
+<!--                <div class="single-pricing-news">-->
+<!--                    <div class="story-author">-->
+<!--                          <div class="card bg-warning text-center h-100">-->
+<!--                               <div class="img-area"><img src="{% static 'main/images/logoForStory.png' %}" ></div>-->
+<!--                               <div class="card-body">-->
+<!--                    <h4 class="card-text text text-center">Имя</h4>-->
+<!--                          <p class="card-text text text-center"></p>-->
+<!--                      </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-sm-6">-->
+<!--                <div class="single-pricing-news">-->
+<!--                    <div class="story-author">-->
+<!--                          <div class="card bg-warning text-center h-100">-->
+<!--                               <div class="img-area"><img src="{% static 'main/images/logoForStory.png' %}" ></div>-->
+<!--                               <div class="card-body">-->
+<!--                    <h4 class="card-text text text-center">Имя</h4>-->
+<!--                          <p class="card-text text text-center"></p>-->
+<!--                      </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-2 col-sm-6">-->
+<!--                <div class="single-pricing-news">-->
+<!--                    <div class="story-author">-->
+<!--                          <div class="card bg-warning text-center h-100">-->
+<!--                               <div class="img-area"><img src="{% static 'main/images/logoForStory.png' %}" ></div>-->
+<!--                               <div class="card-body">-->
+<!--                    <h4 class="card-text text text-center">Имя</h4>-->
+<!--                          <p class="card-text text text-center"></p>-->
+<!--                      </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+      <div class="jumbotron bg-transparent text">
+      <h1>РАСПИСАНИЕ</h1>
+    </div>
+
+<!--      <div class="container">-->
+<!--          <div class="containerr">-->
+<!--            <div class="left">-->
+<!--              <div class="calendar">-->
+<!--                <div class="month">-->
+<!--                  <i class="fas fa-angle-left prev"></i>-->
+<!--                  <div class="date">декабря 2015</div>-->
+<!--                  <i class="fas fa-angle-right next"></i>-->
+<!--                </div>-->
+<!--                <div class="weekdays">-->
+<!--                  <div>Сб</div>-->
+<!--                  <div>Пн</div>-->
+<!--                  <div>Вт</div>-->
+<!--                  <div>Ср</div>-->
+<!--                  <div>Чт</div>-->
+<!--                  <div>Пт</div>-->
+<!--                  <div>Вс</div>-->
+<!--                </div>-->
+<!--                <div class="days"></div>-->
+<!--                <div class="goto-today">-->
+<!--                  <div class="goto">-->
+<!--                    <input type="text" placeholder="мм/гггг" class="date-input" />-->
+<!--                    <button class="goto-btn">Перейти</button>-->
+<!--                  </div>-->
+<!--                  <button class="today-btn">Сегодня</button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="right">-->
+<!--              <div class="today-date">-->
+<!--                <div class="event-day">Ср</div>-->
+<!--                <div class="event-date">12 декабря 2022</div>-->
+<!--              </div>-->
+<!--              <div class="events">-->
+<!--                  {% for p in schedule %}-->
+<!--                  <div class="event">-->
+<!--                  <p>{{p.team}}</p>-->
+<!--                  <p>{{p.date_training}}</p>-->
+<!--                  <p>{{p.start_training}}</p>-->
+<!--                  <p>{{p.finish_training}}</p>-->
+<!--                  </div>-->
+<!--                  {% endfor %}-->
+<!--              </div>-->
+
+<!--              <div class="add-event-wrapper">-->
+<!--                <div class="add-event-header">-->
+<!--                  <div class="title">Добавить событие</div>-->
+<!--                  <i class="fas fa-times close"></i>-->
+<!--                </div>-->
+<!--                <div class="add-event-body">-->
+<!--                  <div class="add-event-input">-->
+<!--                    <input type="text" placeholder="Название события" class="event-name" />-->
+<!--                  </div>-->
+<!--                  <div class="add-event-input">-->
+<!--                    <input-->
+<!--                      type="text"-->
+<!--                      placeholder="Начало"-->
+<!--                      class="event-time-from"-->
+<!--                    />-->
+<!--                  </div>-->
+<!--                  <div class="add-event-input">-->
+<!--                    <input-->
+<!--                      type="text"-->
+<!--                      placeholder="Окончание"-->
+<!--                      class="event-time-to"-->
+<!--                    />-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="add-event-footer">-->
+<!--                  <button class="add-event-btn">Добавить событие</button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <button class="add-event">-->
+<!--              <i class="fas fa-plus"></i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      <script type="text/javascript" src="{% static 'main/js/script.js' %}"></script>-->
+<!--    </div>-->
+
+
+      <div class="row">
+  <div class="col-md-6">
+    <h4 class="mt-4 text">Выберите дату</h4>
+      {{ form.media }}
+     <form class="text">
+      {% csrf_token %}
+      {% bootstrap_form filter.form %}
+      {% bootstrap_button "Очистить" href="?" button_class="btnbtn btn-outlet-primary" %}
+      {% bootstrap_button submit_text button_type="submit" button_class="btn-outlet-primary" %}
+    </form>
+    <h4 class="mt-4 text">События</h4>
+    <ul>
+        <div class="container">
+  <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+      {% for event in object_list %}
+      <div class="col">
+      <a class="btn btn-outlet-primary" href="{% url 'schedule' event.team.id %}">{{ event.team }} ({{ event.date_training|date }})</a>
+       </div>
+          {% empty %}
+      <h5 class="text-center text">Тренировок нет</h5>
+      {% endfor %}
+        </div>
+</div>
+    </ul>
+  </div>
+</div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block extra_css %}
+{{ form.media.css }}
+{% endblock %}
+
+{% block extra_js %}
+{{ form.media.js }}
+{% endblock %}
+
+{% block content%}
+<div class="container overflow-hidden">
+  <div class="row gy-5">
+
+         {% if messages %}
+      <div class="alert alert-dismissible fade show alert-success d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#check-circle-fill"/></svg>
+        <ul class="messages">
+            {% for message in messages %}
+            <a class="text" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</a>
+            {% endfor %}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        {% endif %}
+
+  <div class="jumbotron bg-transparent text">
+  <h1>Ваши записи на индивидуальные занятия</h1>
+</div>
+
+
+<div class="card border-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card-text">
+                        {% if indiv.user.get_full_name %} <a>Имя и фамилия: {{ indiv.user.get_full_name }}</a> {% endif %}
+                        {{ indiv.date_training }}
+                        {{ indiv.start_training }}
+                    <a href="{% url 'indiv_create' %}" class="btn btn-sm btnbtn btn-outline-primary">Записаться на индивидуальую тренировку</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--  <form class="row g-3">-->
+<!--  <div class="col-md-12">-->
+<!--    <label for="inputStatess" class="form-label">Тренер</label>-->
+<!--    <select id="inputStatess" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-12">-->
+<!--    <label for="inputStatesss" class="form-label">Гимнастка</label>-->
+<!--    <select id="inputStatesss" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-3">-->
+<!--    <label for="inputState" class="form-label">Свободные даты</label>-->
+<!--    <select id="inputStateS" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-3">-->
+<!--    <label for="inputState" class="form-label">Время</label>-->
+<!--    <select id="inputState" class="form-select">-->
+<!--      <option selected>Выберите...</option>-->
+<!--      <option>...</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <div class="col-md-6">-->
+<!--    <label for="inputZip" class="form-label">Локация</label>-->
+<!--    <input class="form-control" id="inputZip" type="text" placeholder="Локация" aria-label="Disabled input example" disabled>-->
+<!--  </div>-->
+<!--  <div class="col-12">-->
+<!--  </div>-->
+<!--  <div class="col-12">-->
+<!--    <button type="submit" class="btn btnbtn btn-primary">Записаться и оплатить</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+<!-- </div>-->
+<!--    </div>-->
+{%  endblock %}
